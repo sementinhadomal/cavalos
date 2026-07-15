@@ -52,7 +52,7 @@ export default async function handler(req, res) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
+                'X-API-Key': apiKey
             },
             body: JSON.stringify({
                 payment_method: 'pix',
