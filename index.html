@@ -63,21 +63,75 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section (Crowdfunding Card) -->
         <section class="hero" id="hero">
-            <div class="hero-content">
-                <h1 class="reveal">Eles não podem pedir ajuda.<br><span class="text-highlight">Nós podemos agir.</span></h1>
-                <p class="reveal">Todos os dias encontramos cavalos abandonados, desnutridos, feridos ou vítimas de maus-tratos. Sua doação ajuda a financiar resgates, tratamentos veterinários, alimentação e a recuperação desses animais.</p>
-                <div class="hero-ctas reveal">
-                    <a href="#checkoutModal" class="btn btn-primary btn-open-donation" data-donate-value="100">❤️ Quero Ajudar Agora</a>
-                    <a href="#missao" class="btn btn-outline">Saiba Mais</a>
+            <div class="container">
+                <div class="hero-card reveal">
+                    <h1>Seja a resposta da dor deles. <br><span class="highlight-orange">Sem você, faltam socorro e comida para eles.</span></h1>
+                    <p class="subtitle">Todos os dias encontramos cavalos abandonados, desnutridos, feridos ou vítimas de maus-tratos. Sua doação é o único recurso deles.</p>
+                    
+                    <!-- Proof Social -->
+                    <div class="proof-row">
+                        <div class="avatar-group">
+                            <div class="avatar-dot" style="background-color:#123A72; border-color:#fff;"></div>
+                            <div class="avatar-dot" style="background-color:#F59E0B; border-color:#fff;"></div>
+                            <div class="avatar-dot" style="background-color:#16A34A; border-color:#fff;"></div>
+                            <div class="avatar-dot" style="background-color:#0b2447; border-color:#fff;"></div>
+                        </div>
+                        <div class="proof-text"><span>382 pessoas</span> já apoiaram este mês</div>
+                    </div>
+
+                    <!-- Video Preview Block -->
+                    <div class="hero-media-preview">
+                        <img src="assets/images/cavalo_resgate.jpg" alt="Equipe socorrendo cavalo ferido">
+                        <button class="play-overlay-btn btn-open-donation" data-donate-value="50" aria-label="Ver vídeo do projeto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-primary); margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Goal Tracker -->
+                    <div class="goal-tracker-card">
+                        <div class="goal-header">
+                            <span class="goal-date">Julho 2026</span>
+                            <span class="goal-badge">15% da Meta</span>
+                        </div>
+                        <div class="goal-progress-bar-container">
+                            <div class="goal-progress-bar-fill"></div>
+                        </div>
+                        <div class="goal-stats-grid">
+                            <div class="goal-stat-col">
+                                <h4>R$ 10.500</h4>
+                                <p>arrecadados</p>
+                            </div>
+                            <div class="goal-stat-col" style="border-left: 1px solid rgba(18,58,114,0.1); border-right: 1px solid rgba(18,58,114,0.1);">
+                                <h4>245</h4>
+                                <p>doadores</p>
+                            </div>
+                            <div class="goal-stat-col">
+                                <h4>R$ 70.000</h4>
+                                <p>meta total</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="#checkoutModal" class="btn btn-primary btn-open-donation" data-donate-value="50" style="width: 100%; border-radius: 12px; font-size: 1.2rem; padding: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem;">
+                        QUERO AJUDAR AGORA
+                    </a>
+
+                    <!-- Quote Block -->
+                    <div class="quote-box">
+                        <p>"A grandeza de uma nação e seu progresso moral podem ser julgados pela forma como seus animais são tratados."</p>
+                        <span>Mahatma Gandhi</span>
+                    </div>
+
+                    <!-- Safety badge footer -->
+                    <div class="security-seal-footer">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-top:-1px;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Pagamento 100% seguro e verificado</span>
+                    </div>
                 </div>
             </div>
-            
-            <a href="#missao" class="scroll-indicator" aria-label="Scroll down to mission">
-                <span>Role para explorar</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </a>
         </section>
 
         <!-- Our Mission Section -->
