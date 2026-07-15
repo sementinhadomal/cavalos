@@ -291,6 +291,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Anti-cloning Deterrents ---
+    // Disable right click menu
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+
+    // Disable common shortcut keys used for inspecting/viewing source code
+    document.addEventListener('keydown', (e) => {
+        if (
+            e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+            (e.ctrlKey && e.key === 'U') || 
+            (e.ctrlKey && e.key === 'S')
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
     // 7. Success Stories Read More
     const toggleStoryBtns = document.querySelectorAll('.toggle-story-btn');
     toggleStoryBtns.forEach(btn => {
