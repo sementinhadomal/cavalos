@@ -102,53 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Before & After Slider Interactive Controls
-    const sliders = document.querySelectorAll('.comparison-slider');
-    sliders.forEach(slider => {
-        const beforeImg = slider.querySelector('.image-before');
-        const handle = slider.querySelector('.slider-handle');
-        const bar = slider.querySelector('.slider-bar');
-        
-        let isDragging = false;
-
-        const updateSlider = (clientX) => {
-            const rect = slider.getBoundingClientRect();
-            let position = ((clientX - rect.left) / rect.width) * 100;
-            
-            if (position < 0) position = 0;
-            if (position > 100) position = 100;
-            
-            beforeImg.style.clipPath = `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`;
-            handle.style.left = `${position}%`;
-            bar.style.left = `${position}%`;
-        };
-
-        const startDragging = () => { isDragging = true; };
-        const stopDragging = () => { isDragging = false; };
-
-        // Mouse events
-        handle.addEventListener('mousedown', startDragging);
-        window.addEventListener('mouseup', stopDragging);
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            updateSlider(e.clientX);
-        });
-
-        // Touch events for responsiveness
-        handle.addEventListener('touchstart', startDragging, { passive: true });
-        window.addEventListener('touchend', stopDragging);
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            updateSlider(e.touches[0].clientX);
-        }, { passive: true });
-
-        // Click to move
-        slider.addEventListener('click', (e) => {
-            if (e.target !== handle && !handle.contains(e.target)) {
-                updateSlider(e.clientX);
-            }
-        });
-    });
+    // 4. Video Play Cards on Demand (Hidden/Removed placeholder)
+    // Note: Video play features are ready for when video links are provided.
 
     // 6. Checkout Modal & Donation Value Selection
     const checkoutModal = document.getElementById('checkoutModal');
