@@ -166,28 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCopyPix = document.getElementById('btnCopyPix');
     const btnBackToInput = document.getElementById('btnBackToInput');
 
-    // Input fields
-    const inputName = document.getElementById('donorName');
-    const inputEmail = document.getElementById('donorEmail');
-    const inputCpf = document.getElementById('donorCpf');
-    
     let currentSelectedValue = '50'; // default starting choice
-
-    // Format CPF typing helper
-    if (inputCpf) {
-        inputCpf.addEventListener('input', (e) => {
-            let val = e.target.value.replace(/\D/g, '');
-            if (val.length > 11) val = val.substring(0, 11);
-            if (val.length > 9) {
-                val = `${val.substring(0,3)}.${val.substring(3,6)}.${val.substring(6,9)}-${val.substring(9)}`;
-            } else if (val.length > 6) {
-                val = `${val.substring(0,3)}.${val.substring(3,6)}.${val.substring(6)}`;
-            } else if (val.length > 3) {
-                val = `${val.substring(0,3)}.${val.substring(3)}`;
-            }
-            e.target.value = val;
-        });
-    }
 
     const openCheckout = (initialValue = '') => {
         checkoutModal.classList.add('active');
@@ -274,54 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // CPF validator function
-    function isValidCPF(cpf) {
-        const cleanCpf = cpf.replace(/\D/g, '');
-        if (cleanCpf.length !== 11) return false;
-        if (/^(\d)\1{10}$/.test(cleanCpf)) return false;
-        
-        let sum = 0;
-        let remainder;
-        for (let i = 1; i <= 9; i++) {
-            sum += parseInt(cleanCpf.substring(i - 1, i)) * (11 - i);
-        }
-        remainder = (sum * 10) % 11;
-        if ((remainder === 10) || (remainder === 11)) remainder = 0;
-        if (remainder !== parseInt(cleanCpf.substring(9, 10))) return false;
-        
-        sum = 0;
-        for (let i = 1; i <= 10; i++) {
-            sum += parseInt(cleanCpf.substring(i - 1, i)) * (12 - i);
-        }
-        remainder = (sum * 10) % 11;
-        if ((remainder === 10) || (remainder === 11)) remainder = 0;
-        if (remainder !== parseInt(cleanCpf.substring(10, 11))) return false;
-        
-        return true;
-    }
-
     // Checkout submission - Pix Generation Call
     if (btnDoarAgora) {
         btnDoarAgora.addEventListener('click', async () => {
             const finalVal = currentSelectedValue || checkoutCustomInput.value;
-            const name = inputName.value.trim();
-            const email = inputEmail.value.trim();
-            const cpf = inputCpf.value.trim();
 
             if (!finalVal || parseFloat(finalVal) <= 0) {
                 alert('Por favor, selecione ou digite um valor de doação válido.');
-                return;
-            }
-            if (!name) {
-                alert('Por favor, digite seu nome completo.');
-                return;
-            }
-            if (!email || !email.includes('@')) {
-                alert('Por favor, digite um e-mail válido.');
-                return;
-            }
-            if (!cpf || !isValidCPF(cpf)) {
-                alert('Por favor, digite um CPF válido.');
                 return;
             }
 
@@ -337,9 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({
                         amount: finalVal,
-                        name: name,
-                        email: email,
-                        cpf: cpf
+                        name: 'Doador Ali Cavalos',
+                        email: 'doador@alicavalos.org',
+                        cpf: '11111111111'
                     })
                 });
 
