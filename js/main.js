@@ -1,4 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // UTM Parameter Capture & Storage
+    function captureUtmParams() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'src', 'sck'];
+            const current = JSON.parse(localStorage.getItem('ali_cavalos.utm') || '{}');
+            const updated = {};
+            
+            utmKeys.forEach(key => {
+                const val = params.get(key);
+                updated[key] = val !== null ? val : (current[key] || '');
+            });
+            
+            localStorage.setItem('ali_cavalos.utm', JSON.stringify(updated));
+        } catch (e) {
+            console.error('Error capturing UTMs:', e);
+        }
+    }
+    
+    function getUtmData() {
+        try {
+            return JSON.parse(localStorage.getItem('ali_cavalos.utm') || '{}');
+        } catch (e) {
+            return {};
+        }
+    }
+
+    // Initialize UTM capture
+    captureUtmParams();
+
     // 1. Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
     const nav = document.getElementById('nav');
@@ -253,7 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         amount: finalVal,
                         name: 'Doador Ali Cavalos',
                         email: 'doador@alicavalos.org',
-                        cpf: '11111111111'
+                        cpf: '11111111111',
+                        utm: getUtmData()
                     })
                 });
 

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { amount, name, email, cpf } = req.body;
+        const { amount, name, email, cpf, utm } = req.body;
 
         if (!amount || parseFloat(amount) <= 0) {
             return res.status(400).json({ error: 'Valor de doação inválido.' });
@@ -63,7 +63,16 @@ export default async function handler(req, res) {
                     email: email || 'doador@alicavalos.org',
                     document: cpf ? cpf.replace(/\D/g, '') : '00000000000',
                     phone: '11999999999' // Required parameter (numbers only)
-                }
+                },
+                tracking: utm ? {
+                    utm_source: utm.utm_source || '',
+                    utm_medium: utm.utm_medium || '',
+                    utm_campaign: utm.utm_campaign || '',
+                    utm_term: utm.utm_term || '',
+                    utm_content: utm.utm_content || '',
+                    src: utm.src || '',
+                    sck: utm.sck || ''
+                } : undefined
             })
         });
 
