@@ -110,12 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnPlayHeroVideo && heroMediaContainer) {
         btnPlayHeroVideo.addEventListener('click', () => {
             const videoEl = document.createElement('video');
-            videoEl.setAttribute('src', 'assets/videos/video_principal.mp4');
-            videoEl.setAttribute('autoplay', 'true');
-            videoEl.setAttribute('loop', 'true');
-            videoEl.setAttribute('muted', 'true'); // Muted as requested
-            videoEl.setAttribute('playsinline', 'true');
-            videoEl.setAttribute('controls', 'true');
+            videoEl.src = 'assets/videos/video_principal.mp4';
+            videoEl.autoplay = true;
+            videoEl.loop = true;
+            videoEl.muted = true; // Enforces muted in all browsers
+            videoEl.defaultMuted = true; // Fallback helper
+            videoEl.playsInline = true;
+            videoEl.controls = true;
             videoEl.style.width = '100%';
             videoEl.style.height = '100%';
             videoEl.style.objectFit = 'cover';
