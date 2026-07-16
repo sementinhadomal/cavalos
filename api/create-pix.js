@@ -69,9 +69,10 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
-        if (!response.ok || data.status === 'error') {
+        // Ensure transaction is success and returned the Pix code
+        if (!response.ok || data.status !== 'success' || !data.qr_code) {
             return res.status(response.status || 400).json({ 
-                error: data.message || 'Erro ao processar pagamento junto à gateway.' 
+                error: data.message || 'Não foi possível gerar este Pix. Verifique se o valor está dentro do limite permitido da conta.' 
             });
         }
 
