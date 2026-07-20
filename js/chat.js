@@ -176,4 +176,25 @@ document.addEventListener('DOMContentLoaded', () => {
             handleSend();
         }
     });
+
+    // Listen to value button clicks inside the chat
+    const chatValBtns = document.querySelectorAll('.chat-val-btn');
+    chatValBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const value = btn.getAttribute('data-value');
+            closeChat();
+            
+            if (typeof window.openCheckout === 'function') {
+                if (value === 'custom') {
+                    window.openCheckout(); // Open preset with custom focus
+                    setTimeout(() => {
+                        const modalInput = document.getElementById('checkoutCustomValue');
+                        if (modalInput) modalInput.focus();
+                    }, 350);
+                } else {
+                    window.openCheckout(value);
+                }
+            }
+        });
+    });
 });

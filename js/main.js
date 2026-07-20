@@ -220,6 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+        
+        // Expose globally for chatbot widget integration
+        window.openCheckout = openCheckout;
     };
 
     const closeCheckout = () => {
