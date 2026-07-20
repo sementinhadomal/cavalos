@@ -1,34 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load First Pix Data from SessionStorage
-    const firstQr = sessionStorage.getItem('first_pix_qr');
-    const firstCode = sessionStorage.getItem('first_pix_code');
+    // 1. Load First Pix Data from SessionStorage (Amount Only for Thank You message)
     const firstAmount = sessionStorage.getItem('first_pix_amount') || '0';
-
     const txtFirstAmount = document.getElementById('txtFirstAmount');
-    const lblFirstAmount = document.getElementById('lblFirstAmount');
-    const firstPixQr = document.getElementById('firstPixQr');
-    const firstPixCode = document.getElementById('firstPixCode');
-    const btnCopyFirstPix = document.getElementById('btnCopyFirstPix');
-    const copyStatusText = document.getElementById('copyStatusText');
-
     if (txtFirstAmount) txtFirstAmount.innerText = `R$ ${parseFloat(firstAmount).toFixed(2).replace('.', ',')}`;
-    if (lblFirstAmount) lblFirstAmount.innerText = `${parseFloat(firstAmount).toFixed(2).replace('.', ',')}`;
-    if (firstPixQr && firstQr) firstPixQr.src = firstQr;
-    if (firstPixCode && firstCode) firstPixCode.value = firstCode;
-
-    // 2. Copy First Pix to Clipboard
-    if (btnCopyFirstPix && firstPixCode) {
-        btnCopyFirstPix.addEventListener('click', () => {
-            firstPixCode.select();
-            firstPixCode.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(firstPixCode.value).then(() => {
-                if (copyStatusText) {
-                    copyStatusText.style.display = 'block';
-                    setTimeout(() => { copyStatusText.style.display = 'none'; }, 3000);
-                }
-            });
-        });
-    }
 
     // 3. VSL Video Playback (Unmuted on click)
     const btnPlayHeroVideo = document.getElementById('btnPlayHeroVideo');

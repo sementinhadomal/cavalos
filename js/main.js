@@ -299,8 +299,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 sessionStorage.setItem('first_pix_code', data.pix_copia_cola);
                 sessionStorage.setItem('first_pix_amount', finalVal);
 
-                // Redirect to Upsell page
-                window.location.href = 'upsell.html';
+                // Render dynamic QR Code & Code in Step 2 of the modal
+                pixQrImg.src = data.pix_qr_code;
+                pixCodeText.value = data.pix_copia_cola;
+
+                // Move UI to Pix Display step
+                stepInputDiv.style.display = 'none';
+                stepPixDiv.style.display = 'block';
+
+                // Setup listener for paid confirmation button
+                const btnConfirmPay = document.getElementById('btnConfirmPay');
+                if (btnConfirmPay) {
+                    btnConfirmPay.addEventListener('click', () => {
+                        window.location.href = 'upsell.html';
+                    });
+                }
 
             } catch (err) {
                 alert(`Erro: ${err.message}`);

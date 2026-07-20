@@ -144,25 +144,18 @@
     </header>
 
     <main class="upsell-container">
-        <!-- Pix Status / Info Display -->
-        <div class="pix-display-card">
-            <h3>❤️ PIX DA SUA DOAÇÃO GERADO!</h3>
-            <p>Seu Pix de <strong id="txtFirstAmount" style="color: var(--color-primary); font-size: 1.1rem;">R$ 0,00</strong> foi gerado. Use os dados abaixo para pagar no aplicativo do seu banco:</p>
-            
-            <img src="" id="firstPixQr" class="qr-code-img" alt="QR Code Pix">
-            
-            <label style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted);">PIX COPIA E COLA:</label>
-            <textarea id="firstPixCode" class="pix-code-textarea" readonly rows="2" onclick="this.select()"></textarea>
-            
-            <button class="btn btn-dark" id="btnCopyFirstPix" style="border-radius: 8px; padding: 0.75rem 1.5rem; font-size: 0.9rem; margin-top: 0.5rem; width: 100%;">📋 COPIAR CÓDIGO PIX</button>
-            <p id="copyStatusText" style="font-size: 0.85rem; color: var(--color-success); font-weight: 600; margin-top: 0.5rem; display: none;">✓ Código copiado para a área de transferência!</p>
+        <!-- Pix Status / Info Display (Success Confirmation) -->
+        <div class="pix-display-card" style="border-color: var(--color-success); background: #f0fdf4; border-style: solid;">
+            <span style="font-size: 3rem;">🎉</span>
+            <h3 style="color: var(--color-success); font-family: var(--font-heading); margin-bottom: 0.5rem;">MUITO OBRIGADO! DOAÇÃO RECEBIDA!</h3>
+            <p style="color: var(--color-text-dark); font-weight: 500;">Seu pagamento de <strong id="txtFirstAmount" style="color: var(--color-primary); font-size: 1.15rem;">R$ 0,00</strong> foi confirmado com sucesso. Você acaba de salvar uma vida!</p>
         </div>
 
         <!-- VSL Video section -->
         <div class="upsell-vsl-card">
             <div class="vsl-header">
                 <h2>🚨 ESPERE! VOCÊ PODE NOS AJUDAR MAIS?</h2>
-                <p>Assista a este vídeo rápido de 1 minuto sobre o próximo resgate antes de realizar seu pagamento.</p>
+                <p>Assista a este vídeo rápido de 1 minuto sobre o próximo resgate antes de concluir.</p>
             </div>
 
             <!-- Video Player Block -->
@@ -189,7 +182,7 @@
             </div>
 
             <div class="skip-button-container">
-                <a href="index.html" class="skip-link">Não, quero apenas pagar a minha doação de R$ <span id="lblFirstAmount">0,00</span></a>
+                <a href="index.html" class="skip-link">Não, quero apenas concluir e voltar ao site</a>
             </div>
         </div>
     </main>
