@@ -536,7 +536,7 @@
             <div id="checkoutStepInput">
                 <div class="checkout-header">
                     <h3>Quanto deseja doar?</h3>
-                    <p>Sua doação faz a diferença na reabilitação de animais abandonados.</p>
+                    <p id="checkoutHeaderSub">Doações a partir de <strong>R$ 50</strong> recebem o Colar de presente com frete grátis!</p>
                 </div>
                 
                 <div class="checkout-values-grid">
@@ -544,7 +544,7 @@
                     <button class="checkout-val-btn" data-value="30">R$ 30</button>
                     <button class="checkout-val-btn active" data-value="50" style="position: relative;">
                         R$ 50
-                        <span style="position: absolute; top: -8px; right: 50%; transform: translateX(50%); background: var(--color-primary); color: var(--color-accent); font-size: 0.5rem; font-weight: 800; padding: 2px 6px; border-radius: 10px; border: 1.5px solid var(--color-accent); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;">Mais Escolhido</span>
+                        <span style="position: absolute; top: -8px; right: 50%; transform: translateX(50%); background: var(--color-primary); color: var(--color-accent); font-size: 0.5rem; font-weight: 800; padding: 2px 6px; border-radius: 10px; border: 1.5px solid var(--color-accent); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;">⭐ Inclui Colar</span>
                     </button>
                     <button class="checkout-val-btn" data-value="100">R$ 100</button>
                     <button class="checkout-val-btn" data-value="150">R$ 150</button>
@@ -554,10 +554,27 @@
                     <button class="checkout-val-btn" data-value="1000">R$ 1.000</button>
                 </div>
                 
-                <div class="checkout-custom-field" style="margin-bottom: 1.5rem;">
+                <div class="checkout-custom-field" style="margin-bottom: 1.25rem;">
                     <span class="currency-sym">R$</span>
                     <input type="number" id="checkoutCustomValue" placeholder="Digite outro valor..." min="5">
                 </div>
+
+                <!-- Shipping Address Container (Shown automatically for R$ 50+ donations) -->
+                <div id="shippingFieldsContainer" style="background: rgba(18, 58, 114, 0.04); border: 1.5px solid rgba(18, 58, 114, 0.12); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: left;">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                        <span>🚚 Dados para Envio do Seu Colar Grátis:</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                        <input type="text" id="shippingName" placeholder="Seu Nome Completo *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
+                        <input type="tel" id="shippingPhone" placeholder="WhatsApp / Telefone com DDD *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="shippingCep" placeholder="CEP *" style="width: 40%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
+                            <input type="text" id="shippingAddress" placeholder="Rua e Número *" style="width: 60%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
+                        </div>
+                        <input type="text" id="shippingCity" placeholder="Bairro, Cidade e Estado *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
+                    </div>
+                </div>
+
                 <button class="btn btn-primary" id="btnDoarAgora" style="width: 100%; border-radius:8px; padding:1rem;">❤️ GERAR PIX DE DOAÇÃO</button>
             </div>
 

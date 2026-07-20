@@ -174,6 +174,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSelectedValue = '50'; // default starting choice
 
+    const shippingFieldsContainer = document.getElementById('shippingFieldsContainer');
+    const shippingNameInput = document.getElementById('shippingName');
+    const shippingPhoneInput = document.getElementById('shippingPhone');
+    const shippingCepInput = document.getElementById('shippingCep');
+    const shippingAddressInput = document.getElementById('shippingAddress');
+    const shippingCityInput = document.getElementById('shippingCity');
+
+    const updateShippingFieldsVisibility = (val) => {
+        const numVal = parseFloat(val) || 0;
+        if (shippingFieldsContainer) {
+            if (numVal >= 50) {
+                shippingFieldsContainer.style.display = 'block';
+            } else {
+                shippingFieldsContainer.style.display = 'none';
+            }
+        }
+    };
+
     const openCheckout = (initialValue = '') => {
         checkoutModal.classList.add('active');
         checkoutModal.setAttribute('aria-hidden', 'false');
@@ -221,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
+        updateShippingFieldsVisibility(currentSelectedValue);
+
         // Expose globally for chatbot widget integration
         window.openCheckout = openCheckout;
     };
@@ -257,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
             currentSelectedValue = btn.getAttribute('data-value');
             if (checkoutCustomInput) checkoutCustomInput.value = ''; // clear custom
+            updateShippingFieldsVisibility(currentSelectedValue);
         });
     });
 
@@ -266,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove active style from presets
             checkoutValBtns.forEach(b => b.classList.remove('active'));
             currentSelectedValue = checkoutCustomInput.value;
+            updateShippingFieldsVisibility(currentSelectedValue);
         });
     }
 
@@ -315,10 +337,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnDoarAgora) {
         btnDoarAgora.addEventListener('click', async () => {
             const finalVal = currentSelectedValue || (checkoutCustomInput ? checkoutCustomInput.value : 0);
+            const numVal = parseFloat(finalVal) || 0;
 
-            if (!finalVal || parseFloat(finalVal) <= 0) {
+            if (!finalVal || numVal <= 0) {
                 alert('Por favor, selecione ou digite um valor de doação válido.');
                 return;
+            }
+
+            let payerName = 'Doador Ali Cavalos';
+
+            // Validate shipping fields if donation is R$ 50 or higher (receives necklace)
+            if (numVal >= 50) {
+                const sName = shippingNameInput ? shippingNameInput.value.trim() : '';
+                const sPhone = shippingPhoneInput ? shippingPhoneInput.value.trim() : '';
+                const sCep = shippingCepInput ? shippingCepInput.value.trim() : '';
+                const sAddress = shippingAddressInput ? shippingAddressInput.value.trim() : '';
+                const sCity = shippingCityInput ? shippingCityInput.value.trim() : '';
+
+                if (!sName || !sPhone || !sAddress) {
+                    alert('Por favor, preencha o seu Nome, Telefone/WhatsApp e Endereço para o envio do seu Colar de presente!');
+                    if (!sName && shippingNameInput) shippingNameInput.focus();
+                    else if (!sPhone && shippingPhoneInput) shippingPhoneInput.focus();
+                    else if (!sAddress && shippingAddressInput) shippingAddressInput.focus();
+                    return;
+                }
+
+                payerName = sName;
+
+                // Save shipping details locally for order fulfillment (NOT sent to Paradise Pay)
+                try {
+                    localStorage.setItem('ali_cavalos.shipping_info', JSON.stringify({
+                        name: sName,
+                        phone: sPhone,
+                        cep: sCep,
+                        address: sAddress,
+                        city: sCity,
+                        amount: numVal,
+                        timestamp: new Date().toISOString()
+                    }));
+                } catch (e) {}
             }
 
             // Show loading state
@@ -330,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pixQrImg) pixQrImg.style.display = 'none';
 
             try {
+                /* Payload sent to Paradise Pay - Address & Phone are EXCLUDED to keep payload clean */
                 const response = await fetch('/api/create-pix', {
                     method: 'POST',
                     headers: {
@@ -337,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({
                         amount: finalVal.toString(),
-                        name: 'Doador Ali Cavalos',
+                        name: payerName,
                         email: 'doador@alicavalos.org',
                         cpf: '11111111111',
                         utm: getUtmData()
