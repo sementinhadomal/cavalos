@@ -190,6 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 shippingFieldsContainer.style.display = 'none';
             }
         }
+        if (typeof window.updateModalColarDisplay === 'function') {
+            window.updateModalColarDisplay();
+        }
     };
 
     const openCheckout = (initialValue = '') => {
@@ -625,6 +628,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4 Colares Color & Modal Handlers ---
     window._selectedColarColors = { 1: 'gold', 2: 'gold', 3: 'gold', 4: 'gold' };
+    window._activeColarNum = 2; // Default to Colar Elo Infinito
+
+    const colarTitles = {
+        1: 'Colar Esperança Equina',
+        2: 'Colar Elo Infinito',
+        3: 'Colar Espírito Livre',
+        4: 'Étriers Elegance'
+    };
+
+    window.updateModalColarDisplay = function() {
+        const modalPreview = document.getElementById('modalColarPreview');
+        const numVal = parseFloat(currentSelectedValue) || 0;
+
+        if (modalPreview) {
+            if (numVal >= 50) {
+                modalPreview.style.display = 'flex';
+                const num = window._activeColarNum || 2;
+                const color = window._selectedColarColors[num] || 'gold';
+                const imgEl = document.getElementById('modalColarImg');
+                const titleEl = document.getElementById('modalColarTitle');
+                const badgeEl = document.getElementById('modalColarBadge');
+
+                if (imgEl) imgEl.src = `assets/images/necklace-${num}-${color}.png`;
+                if (titleEl) titleEl.innerText = colarTitles[num] || 'Colar Elo Infinito';
+                if (badgeEl) {
+                    if (color === 'gold') {
+                        badgeEl.innerText = '✦ Ouro';
+                        badgeEl.style.color = '#92400e';
+                        badgeEl.style.background = '#fffbebf5';
+                        badgeEl.style.borderColor = '#d97706';
+                    } else {
+                        badgeEl.innerText = '✦ Prata';
+                        badgeEl.style.color = '#1e293b';
+                        badgeEl.style.background = '#f1f5f9';
+                        badgeEl.style.borderColor = '#64748b';
+                    }
+                }
+            } else {
+                modalPreview.style.display = 'none';
+            }
+        }
+    };
 
     window.setColarColor = function(num, color) {
         window._selectedColarColors[num] = color;
@@ -646,9 +691,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (color === 'gold') btnGold.classList.add('active-gold');
             else btnSilver.classList.add('active-silver');
         }
+
+        window.updateModalColarDisplay();
+    };
+
+    window.setModalColarColor = function(color) {
+        const num = window._activeColarNum || 2;
+        window.setColarColor(num, color);
     };
 
     window.openColarModal = function(num) {
+        window._activeColarNum = num || 2;
         openCheckout('50');
+        window.updateModalColarDisplay();
     };
 });

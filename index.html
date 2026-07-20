@@ -652,6 +652,22 @@
                     <p id="checkoutHeaderSub">Doações a partir de <strong>R$ 50</strong> recebem o Colar de presente com frete grátis!</p>
                 </div>
                 
+                <!-- Selected Necklace Preview Card inside Modal -->
+                <div id="modalColarPreview" style="background: #ffffff; border: 1.5px solid rgba(18,58,114,0.15); border-radius: 12px; padding: 0.85rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.85rem; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                    <img id="modalColarImg" src="assets/images/necklace-2-gold.png" alt="Colar Selecionado" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.5px;">🎁 Seu Presente Selecionado:</div>
+                        <div id="modalColarTitle" style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary);">Colar Elo Infinito</div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem;">
+                            <span id="modalColarBadge" style="font-size: 0.75rem; font-weight: 700; color: #92400e; background: #fffbebf5; border: 1px solid #d97706; padding: 1px 8px; border-radius: 12px;">✦ Ouro</span>
+                            <div style="display: flex; gap: 4px;">
+                                <button onclick="setModalColarColor('gold')" style="border: 1px solid #d97706; background: #fffbebf5; color: #92400e; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Ouro</button>
+                                <button onclick="setModalColarColor('silver')" style="border: 1px solid #64748b; background: #f1f5f9; color: #1e293b; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Prata</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="checkout-values-grid">
                     <button class="checkout-val-btn" data-value="20">R$ 20</button>
                     <button class="checkout-val-btn" data-value="30">R$ 30</button>
