@@ -622,4 +622,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setupBackRedirect();
+
+    // --- 4 Colares Color & Modal Handlers ---
+    window._selectedColarColors = { 1: 'gold', 2: 'gold', 3: 'gold', 4: 'gold' };
+
+    window.setColarColor = function(num, color) {
+        window._selectedColarColors[num] = color;
+        const choiceGold = document.getElementById('colar-choice-' + num + '-gold');
+        const choiceSilver = document.getElementById('colar-choice-' + num + '-silver');
+        const btnGold = document.getElementById('colar-btn-' + num + '-gold');
+        const btnSilver = document.getElementById('colar-btn-' + num + '-silver');
+
+        if (choiceGold && choiceSilver) {
+            choiceGold.classList.remove('active-gold', 'active-silver');
+            choiceSilver.classList.remove('active-gold', 'active-silver');
+            if (color === 'gold') choiceGold.classList.add('active-gold');
+            else choiceSilver.classList.add('active-silver');
+        }
+
+        if (btnGold && btnSilver) {
+            btnGold.classList.remove('active-gold', 'active-silver');
+            btnSilver.classList.remove('active-silver', 'active-gold');
+            if (color === 'gold') btnGold.classList.add('active-gold');
+            else btnSilver.classList.add('active-silver');
+        }
+    };
+
+    window.openColarModal = function(num) {
+        openCheckout('50');
+    };
 });

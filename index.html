@@ -242,6 +242,119 @@
             </div>
         </section>
 
+        <!-- Section: Coleção de Colares (Os 4 Colares) -->
+        <section class="necklaces-section" id="colares">
+            <div class="container">
+                <div class="necklaces-header reveal">
+                    <span class="section-tag">🎁 Edição Solidária</span>
+                    <h2>Nossa Coleção de Colares</h2>
+                    <p>Doações a partir de <strong>R$ 50</strong> recebem de presente o seu colar preferido em Prata ou Ouro com frete grátis para todo o Brasil!</p>
+                </div>
+
+                <div class="colares-grid reveal">
+                    <!-- Colar 1: Esperança Equina -->
+                    <div class="colar-card">
+                        <span class="colar-card-badge">✦ Resgate</span>
+                        <div class="colar-img-wrap">
+                            <div class="colar-img-choice active-gold" id="colar-choice-1-gold" onclick="setColarColor(1, 'gold')">
+                                <img src="assets/images/necklace-1-gold.png" alt="Colar Esperança Equina Ouro">
+                                <span class="colar-img-tag">Ouro</span>
+                            </div>
+                            <div class="colar-img-choice" id="colar-choice-1-silver" onclick="setColarColor(1, 'silver')">
+                                <img src="assets/images/necklace-1-silver.png" alt="Colar Esperança Equina Prata">
+                                <span class="colar-img-tag">Prata</span>
+                            </div>
+                        </div>
+                        <div class="colar-body">
+                            <h3>Colar Esperança Equina</h3>
+                            <p>Pendente delicado de cavalo em círculo, perfeito para qualquer ocasião.</p>
+                            <div class="colar-color-btns">
+                                <button class="colar-color-btn active-gold" id="colar-btn-1-gold" onclick="setColarColor(1, 'gold')">✦ Ouro</button>
+                                <button class="colar-color-btn" id="colar-btn-1-silver" onclick="setColarColor(1, 'silver')">✦ Prata</button>
+                            </div>
+                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
+                            <button class="colar-btn-buy" onclick="openColarModal(1)">DOAR R$ 50 & RECEBER</button>
+                        </div>
+                    </div>
+
+                    <!-- Colar 2: Elo Infinito -->
+                    <div class="colar-card" style="border-color: var(--color-accent);">
+                        <span class="colar-card-badge">⭐ Mais Escolhido</span>
+                        <div class="colar-img-wrap">
+                            <div class="colar-img-choice active-gold" id="colar-choice-2-gold" onclick="setColarColor(2, 'gold')">
+                                <img src="assets/images/necklace-2-gold.png" alt="Colar Elo Infinito Ouro">
+                                <span class="colar-img-tag">Ouro</span>
+                            </div>
+                            <div class="colar-img-choice" id="colar-choice-2-silver" onclick="setColarColor(2, 'silver')">
+                                <img src="assets/images/necklace-2-silver.png" alt="Colar Elo Infinito Prata">
+                                <span class="colar-img-tag">Prata</span>
+                            </div>
+                        </div>
+                        <div class="colar-body">
+                            <h3>Colar Elo Infinito</h3>
+                            <p>Figura de cavalo tridimensional artesanal, símbolo de devoção e amor equino.</p>
+                            <div class="colar-color-btns">
+                                <button class="colar-color-btn active-gold" id="colar-btn-2-gold" onclick="setColarColor(2, 'gold')">✦ Ouro</button>
+                                <button class="colar-color-btn" id="colar-btn-2-silver" onclick="setColarColor(2, 'silver')">✦ Prata</button>
+                            </div>
+                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
+                            <button class="colar-btn-buy" style="background: var(--color-accent); color: var(--color-primary);" onclick="openColarModal(2)">DOAR R$ 50 & RECEBER</button>
+                        </div>
+                    </div>
+
+                    <!-- Colar 3: Espírito Livre -->
+                    <div class="colar-card">
+                        <span class="colar-card-badge">✦ Exclusivo</span>
+                        <div class="colar-img-wrap">
+                            <div class="colar-img-choice active-gold" id="colar-choice-3-gold" onclick="setColarColor(3, 'gold')">
+                                <img src="assets/images/necklace-3-gold.png" alt="Colar Espírito Livre Ouro">
+                                <span class="colar-img-tag">Ouro</span>
+                            </div>
+                            <div class="colar-img-choice" id="colar-choice-3-silver" onclick="setColarColor(3, 'silver')">
+                                <img src="assets/images/necklace-3-silver.png" alt="Colar Espírito Livre Prata">
+                                <span class="colar-img-tag">Prata</span>
+                            </div>
+                        </div>
+                        <div class="colar-body">
+                            <h3>Colar Espírito Livre</h3>
+                            <p>Design elegante a dupla estribos Y, inspirado na grande tradição equestre.</p>
+                            <div class="colar-color-btns">
+                                <button class="colar-color-btn active-gold" id="colar-btn-3-gold" onclick="setColarColor(3, 'gold')">✦ Ouro</button>
+                                <button class="colar-color-btn" id="colar-btn-3-silver" onclick="setColarColor(3, 'silver')">✦ Prata</button>
+                            </div>
+                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
+                            <button class="colar-btn-buy" onclick="openColarModal(3)">DOAR R$ 50 & RECEBER</button>
+                        </div>
+                    </div>
+
+                    <!-- Colar 4: Étriers Elegance -->
+                    <div class="colar-card">
+                        <span class="colar-card-badge">✦ Lançamento</span>
+                        <div class="colar-img-wrap">
+                            <div class="colar-img-choice active-gold" id="colar-choice-4-gold" onclick="setColarColor(4, 'gold')">
+                                <img src="assets/images/necklace-4-gold.png" alt="Étriers Elegance Ouro">
+                                <span class="colar-img-tag">Ouro</span>
+                            </div>
+                            <div class="colar-img-choice" id="colar-choice-4-silver" onclick="setColarColor(4, 'silver')">
+                                <img src="assets/images/necklace-4-silver.png" alt="Étriers Elegance Prata">
+                                <span class="colar-img-tag">Prata</span>
+                            </div>
+                        </div>
+                        <div class="colar-body">
+                            <h3>Étriers Elegance</h3>
+                            <p>Perfil minimalista de cavalo, símbolo moderno de elegância e liberdade.</p>
+                            <div class="colar-color-btns">
+                                <button class="colar-color-btn active-gold" id="colar-btn-4-gold" onclick="setColarColor(4, 'gold')">✦ Ouro</button>
+                                <button class="colar-color-btn" id="colar-btn-4-silver" onclick="setColarColor(4, 'silver')">✦ Prata</button>
+                            </div>
+                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
+                            <button class="colar-btn-buy" onclick="openColarModal(4)">DOAR R$ 50 & RECEBER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Donation Packages Section -->
         <section class="section section-bg-light" id="como-ajudar">
             <div class="container">
