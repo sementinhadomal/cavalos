@@ -91,6 +91,37 @@ export default async function handler(req, res) {
             qrCodeImage = 'data:image/png;base64,' + qrCodeImage;
         }
 
+        // Notify Utmify API server-side about the generated Pix order
+        try {
+            const utmToken = process.env.UTMIFY_API_TOKEN || '6a58d5851448fa453642d0da';
+            fetch('https://api.utmify.com.br/api/v1/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': utmToken,
+                    'x-api-key': utmToken
+                },
+                body: JSON.stringify({
+                    orderId: data.transaction_id || 'ali_' + Date.now(),
+                    platform: 'ParadisePags',
+                    paymentMethod: 'pix',
+                    status: 'waiting_payment',
+                    createdAt: new Date().toISOString(),
+                    customer: {
+                        name: name || 'Doador Ali Cavalos',
+                        email: email || 'doador@alicavalos.org',
+                        phone: '11999999999'
+                    },
+                    products: [{
+                        id: 'doacao_ali',
+                        name: 'Doação Ali Cavalos Resgates',
+                        price: amountInCents
+                    }],
+                    trackingParameters: utm || {}
+                })
+            }).catch(e => console.log('Utmify notification notice:', e.message));
+        } catch (uErr) {}
+
         // Return standard structure returned by gateway
         return res.status(200).json({
             success: true,

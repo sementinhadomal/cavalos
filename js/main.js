@@ -420,6 +420,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 pixQrImg.src = data.pix_qr_code;
                 pixCodeText.value = data.pix_copia_cola;
 
+                // Notify Utmify frontend script
+                try {
+                    if (window.utmify && typeof window.utmify.track === 'function') {
+                        window.utmify.track('InitiateCheckout', { amount: parseFloat(finalVal) });
+                        window.utmify.track('PixGenerated', { amount: parseFloat(finalVal) });
+                    }
+                } catch (uErr) {}
+
                 // Start timer
                 startPixCountdown();
 
