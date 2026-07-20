@@ -644,7 +644,63 @@
         </div>
     </div>
 
+    <!-- Floating AI Chatbot Widget -->
+    <div id="aiChatBubble" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 8px 24px rgba(18,58,114,0.3); border: 2px solid var(--color-accent); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <span style="font-size: 1.8rem; line-height: 1;">🐴</span>
+        <div id="aiChatNotification" style="position: absolute; top: -5px; right: -5px; background: var(--color-accent); color: var(--color-primary); font-size: 0.75rem; font-weight: bold; padding: 2px 6px; border-radius: 10px; border: 2px solid var(--color-white); animation: pulse 2s infinite;">1</div>
+    </div>
+
+    <!-- Chat Box Window -->
+    <div id="aiChatBox" style="position: fixed; bottom: 90px; right: 20px; width: 360px; height: 500px; max-height: calc(100vh - 120px); max-width: calc(100vw - 40px); background: var(--color-white); border-radius: 16px; border: 1px solid rgba(18,58,114,0.15); box-shadow: 0 12px 36px rgba(18,58,114,0.18); display: none; flex-direction: column; z-index: 1000; overflow: hidden; transition: opacity 0.3s ease, transform 0.3s ease; opacity: 0; transform: translateY(20px);">
+        <!-- Chat Header -->
+        <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); padding: 1rem; color: var(--color-white); display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--color-accent);">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-white); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid var(--color-accent);">🐴</div>
+                <div style="text-align: left;">
+                    <div style="font-weight: bold; font-size: 0.95rem;">Conversar com o Ali</div>
+                    <div style="font-size: 0.75rem; display: flex; align-items: center; gap: 0.25rem; opacity: 0.9;">
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #4ade80; display: inline-block; animation: pulseGreen 1.5s infinite;"></span>
+                        Online agora
+                    </div>
+                </div>
+            </div>
+            <button id="aiChatClose" style="background: transparent; border: none; color: var(--color-white); font-size: 1.25rem; cursor: pointer; padding: 0.25rem; opacity: 0.8; transition: opacity 0.2s;">&times;</button>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div id="aiChatMessages" style="flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.85rem; background: #f8fafc;">
+            <!-- Messages populated via JS -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <div style="padding: 0.75rem; background: var(--color-white); border-top: 1px solid rgba(18,58,114,0.1); display: flex; gap: 0.5rem; align-items: center;">
+            <input type="text" id="aiChatInput" placeholder="Escreva sua mensagem..." style="flex: 1; border: 1.5px solid rgba(18,58,114,0.15); border-radius: 20px; padding: 0.6rem 1rem; font-size: 0.9rem; outline: none; transition: border-color 0.2s;">
+            <button id="aiChatSend" style="background: var(--color-primary); color: var(--color-white); border: none; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s; flex-shrink: 0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform: rotate(45deg); margin-left: -2px; margin-top: 2px;"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Extra Animations CSS -->
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+        #aiChatBubble:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 28px rgba(18,58,114,0.4);
+        }
+    </style>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html>
