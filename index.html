@@ -582,14 +582,21 @@
 
                 <!-- Order Bump at Pix Screen (Post-Generation Upsell) -->
                 <div class="checkout-order-bump-pix" id="orderBumpPixContainer" style="margin: 0 auto 1.5rem auto; display: flex; flex-direction: column; gap: 0.75rem; background: rgba(245, 158, 11, 0.06); padding: 0.85rem; border-radius: 12px; border: 1.5px dashed var(--color-accent); text-align: left; max-width: 380px; width: 100%;">
-                    <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                        <input type="checkbox" id="orderBumpPixCheckbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--color-accent); margin-top: 2px;">
-                        <label for="orderBumpPixCheckbox" style="font-size: 0.85rem; color: var(--color-text-dark); cursor: pointer; font-weight: 500; user-select: none; line-height: 1.35; width: 100%;">
-                            <span style="font-weight: 700; color: var(--color-primary); display: block; margin-bottom: 0.15rem;">🐴 Ajudar Mais Cavalos (+ R$ 15,00)</span>
-                            Quero somar + R$ 15 para apoiar no resgate, alimentação e tratamento médico de outros cavalos abandonados.
+                    <div style="font-size: 0.85rem; color: var(--color-text-dark); font-weight: 500; line-height: 1.35;">
+                        <span style="font-weight: 700; color: var(--color-primary); display: block; margin-bottom: 0.25rem;">🐴 Ajudar Mais Cavalos (Doação Extra)</span>
+                        Escolha um valor adicional para somar e apoiar no tratamento de outros cavalos resgatados:
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin: 0.15rem 0;">
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; font-weight: bold; color: var(--color-primary); cursor: pointer; user-select: none;">
+                            <input type="radio" name="extraAmountOption" value="10" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-accent);"> + R$ 10,00
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; font-weight: bold; color: var(--color-primary); cursor: pointer; user-select: none;">
+                            <input type="radio" name="extraAmountOption" value="15" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-accent);"> + R$ 15,00
                         </label>
                     </div>
-                    <button class="btn btn-primary" id="btnUpdatePix" style="width: 100%; border-radius: 6px; padding: 0.6rem; font-size: 0.9rem; display: none; background-color: var(--color-accent); color: var(--color-primary); font-weight: bold; border: none; cursor: pointer;">⚡ ATUALIZAR PIX COM R$ 15 EXTRA</button>
+                    
+                    <button class="btn btn-primary" id="btnUpdatePix" style="width: 100%; border-radius: 6px; padding: 0.6rem; font-size: 0.9rem; background-color: var(--color-accent); color: var(--color-primary); font-weight: bold; border: none; cursor: pointer;">⚡ ATUALIZAR PIX COM VALOR EXTRA</button>
                 </div>
 
                 <div style="color: var(--color-success); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;">

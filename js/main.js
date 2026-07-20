@@ -189,14 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
             orderBumpPixContainer.style.background = 'rgba(245, 158, 11, 0.06)';
             orderBumpPixContainer.style.borderColor = 'var(--color-accent)';
             orderBumpPixContainer.innerHTML = `
-                <div style="display: flex; align-items: flex-start; gap: 0.75rem; width: 100%;">
-                    <input type="checkbox" id="orderBumpPixCheckbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--color-accent); margin-top: 2px;">
-                    <label for="orderBumpPixCheckbox" style="font-size: 0.85rem; color: var(--color-text-dark); cursor: pointer; font-weight: 500; user-select: none; line-height: 1.35; width: 100%;">
-                        <span style="font-weight: 700; color: var(--color-primary); display: block; margin-bottom: 0.15rem;">🐴 Ajudar Mais Cavalos (+ R$ 15,00)</span>
-                        Quero somar + R$ 15 para apoiar no resgate, alimentação e tratamento médico de outros cavalos abandonados.
+                <div style="font-size: 0.85rem; color: var(--color-text-dark); font-weight: 500; line-height: 1.35; width: 100%;">
+                    <span style="font-weight: 700; color: var(--color-primary); display: block; margin-bottom: 0.25rem;">🐴 Ajudar Mais Cavalos (Doação Extra)</span>
+                    Escolha um valor adicional para somar e apoiar no tratamento de outros cavalos resgatados:
+                </div>
+                <div style="display: flex; gap: 1rem; margin: 0.15rem 0; width: 100%;">
+                    <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; font-weight: bold; color: var(--color-primary); cursor: pointer; user-select: none;">
+                        <input type="radio" name="extraAmountOption" value="10" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-accent);"> + R$ 10,00
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; font-weight: bold; color: var(--color-primary); cursor: pointer; user-select: none;">
+                        <input type="radio" name="extraAmountOption" value="15" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-accent);"> + R$ 15,00
                     </label>
                 </div>
-                <button class="btn btn-primary" id="btnUpdatePix" style="width: 100%; border-radius: 6px; padding: 0.6rem; font-size: 0.9rem; display: none; background-color: var(--color-accent); color: var(--color-primary); font-weight: bold; border: none; cursor: pointer;">⚡ ATUALIZAR PIX COM R$ 15 EXTRA</button>
+                <button class="btn btn-primary" id="btnUpdatePix" style="width: 100%; border-radius: 6px; padding: 0.6rem; font-size: 0.9rem; background-color: var(--color-accent); color: var(--color-primary); font-weight: bold; border: none; cursor: pointer;">⚡ ATUALIZAR PIX COM VALOR EXTRA</button>
             `;
             setupPostBumpListeners();
         }
@@ -337,18 +342,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Post-generation Order Bump update handler
     function setupPostBumpListeners() {
-        const orderBumpPixCheckbox = document.getElementById('orderBumpPixCheckbox');
         const btnUpdatePix = document.getElementById('btnUpdatePix');
         const orderBumpPixContainer = document.getElementById('orderBumpPixContainer');
 
-        if (orderBumpPixCheckbox && btnUpdatePix) {
-            orderBumpPixCheckbox.addEventListener('change', () => {
-                btnUpdatePix.style.display = orderBumpPixCheckbox.checked ? 'block' : 'none';
-            });
-
+        if (btnUpdatePix) {
             btnUpdatePix.addEventListener('click', async () => {
+                const selectedRadio = document.querySelector('input[name="extraAmountOption"]:checked');
+                const extraAmount = selectedRadio ? parseFloat(selectedRadio.value) : 15;
+
                 const currentAmount = parseFloat(sessionStorage.getItem('first_pix_amount')) || 0;
-                const newAmount = currentAmount + 15;
+                const newAmount = currentAmount + extraAmount;
 
                 btnUpdatePix.disabled = true;
                 btnUpdatePix.innerText = '⚡ ATUALIZANDO COBRANÇA...';
@@ -385,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         orderBumpPixContainer.innerHTML = `
                             <div style="color: var(--color-success); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; justify-content: center; width: 100%; padding: 0.25rem 0;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span>Doação Atualizada! + R$ 15 inclusos no Pix acima.</span>
+                                <span>Doação Atualizada! + R$ ${extraAmount} inclusos no Pix acima.</span>
                             </div>
                         `;
                     }
@@ -393,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (err) {
                     alert(`Erro: ${err.message}`);
                     btnUpdatePix.disabled = false;
-                    btnUpdatePix.innerText = '⚡ ATUALIZAR PIX COM R$ 15 EXTRA';
+                    btnUpdatePix.innerText = '⚡ ATUALIZAR PIX COM VALOR EXTRA';
                 }
             });
         }
