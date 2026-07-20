@@ -542,7 +542,10 @@
                 <div class="checkout-values-grid">
                     <button class="checkout-val-btn" data-value="20">R$ 20</button>
                     <button class="checkout-val-btn" data-value="30">R$ 30</button>
-                    <button class="checkout-val-btn active" data-value="50">R$ 50</button>
+                    <button class="checkout-val-btn active" data-value="50" style="position: relative;">
+                        R$ 50
+                        <span style="position: absolute; top: -8px; right: 50%; transform: translateX(50%); background: var(--color-primary); color: var(--color-accent); font-size: 0.5rem; font-weight: 800; padding: 2px 6px; border-radius: 10px; border: 1.5px solid var(--color-accent); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;">Mais Escolhido</span>
+                    </button>
                     <button class="checkout-val-btn" data-value="100">R$ 100</button>
                     <button class="checkout-val-btn" data-value="150">R$ 150</button>
                     <button class="checkout-val-btn" data-value="200">R$ 200</button>
