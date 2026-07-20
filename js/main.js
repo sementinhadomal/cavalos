@@ -174,6 +174,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSelectedValue = '50'; // default starting choice
 
+    const orderBumpCheckbox = document.getElementById('orderBumpCheckbox');
+
+    const updateButtonText = () => {
+        const baseVal = parseFloat(currentSelectedValue || checkoutCustomInput.value) || 0;
+        const extraVal = (orderBumpCheckbox && orderBumpCheckbox.checked) ? 15 : 0;
+        const totalVal = baseVal + extraVal;
+        
+        if (totalVal > 0) {
+            btnDoarAgora.innerText = `❤️ GERAR PIX DE R$ ${totalVal.toFixed(2).replace('.', ',')}`;
+        } else {
+            btnDoarAgora.innerText = `❤️ GERAR PIX DE DOAÇÃO`;
+        }
+    };
+
     const openCheckout = (initialValue = '') => {
         checkoutModal.classList.add('active');
         checkoutModal.setAttribute('aria-hidden', 'false');
@@ -181,10 +195,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset states
         stepInputDiv.style.display = 'block';
         stepPixDiv.style.display = 'none';
+
+        // Reset Order Bump Checkbox
+        if (orderBumpCheckbox) {
+            orderBumpCheckbox.checked = false;
+        }
         
         if (initialValue) {
             currentSelectedValue = initialValue;
-            checkoutCustomInput.value = '';
+            if (checkoutCustomInput) checkoutCustomInput.value = '';
             
             // Highlight selected button, remove active from others
             checkoutValBtns.forEach(btn => {
@@ -196,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+        updateButtonText();
     };
 
     const closeCheckout = () => {
@@ -229,7 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
             checkoutValBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentSelectedValue = btn.getAttribute('data-value');
-            checkoutCustomInput.value = ''; // clear custom
+            if (checkoutCustomInput) checkoutCustomInput.value = ''; // clear custom
+            updateButtonText();
         });
     });
 
@@ -239,6 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove active style from presets
             checkoutValBtns.forEach(b => b.classList.remove('active'));
             currentSelectedValue = checkoutCustomInput.value;
+            updateButtonText();
+        });
+    }
+
+    // Listen to Order Bump change
+    if (orderBumpCheckbox) {
+        orderBumpCheckbox.addEventListener('change', () => {
+            updateButtonText();
         });
     }
 
@@ -251,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (customVal && parseFloat(customVal) > 0) {
                 openCheckout(customVal);
                 // Set custom input inside the modal
-                checkoutCustomInput.value = customVal;
+                if (checkoutCustomInput) checkoutCustomInput.value = customVal;
                 checkoutValBtns.forEach(b => b.classList.remove('active'));
             } else {
                 openCheckout('50'); // fallback
@@ -262,9 +291,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Checkout submission - Pix Generation Call
     if (btnDoarAgora) {
         btnDoarAgora.addEventListener('click', async () => {
-            const finalVal = currentSelectedValue || checkoutCustomInput.value;
+            const baseVal = parseFloat(currentSelectedValue || (checkoutCustomInput ? checkoutCustomInput.value : 0)) || 0;
+            const extraVal = (orderBumpCheckbox && orderBumpCheckbox.checked) ? 15 : 0;
+            const totalVal = baseVal + extraVal;
 
-            if (!finalVal || parseFloat(finalVal) <= 0) {
+            if (totalVal <= 0) {
                 alert('Por favor, selecione ou digite um valor de doação válido.');
                 return;
             }
@@ -280,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        amount: finalVal,
+                        amount: totalVal.toString(),
                         name: 'Doador Ali Cavalos',
                         email: 'doador@alicavalos.org',
                         cpf: '11111111111',
@@ -297,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Store details in sessionStorage
                 sessionStorage.setItem('first_pix_qr', data.pix_qr_code);
                 sessionStorage.setItem('first_pix_code', data.pix_copia_cola);
-                sessionStorage.setItem('first_pix_amount', finalVal);
+                sessionStorage.setItem('first_pix_amount', totalVal.toString());
 
                 // Render dynamic QR Code & Code in Step 2 of the modal
                 pixQrImg.src = data.pix_qr_code;
@@ -307,19 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 stepInputDiv.style.display = 'none';
                 stepPixDiv.style.display = 'block';
 
-                // Setup listener for paid confirmation button
-                const btnConfirmPay = document.getElementById('btnConfirmPay');
-                if (btnConfirmPay) {
-                    btnConfirmPay.addEventListener('click', () => {
-                        window.location.href = 'upsell.html';
-                    });
-                }
-
             } catch (err) {
                 alert(`Erro: ${err.message}`);
             } finally {
                 btnDoarAgora.disabled = false;
-                btnDoarAgora.innerText = '❤️ GERAR PIX DE DOAÇÃO';
+                updateButtonText(); // Restore button text
             }
         });
     }
