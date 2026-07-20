@@ -542,24 +542,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Anti-cloning Deterrents ---
-    // Disable right click menu
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
+    // --- Enhanced Anti-Cloning & Content Protection ---
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('selectstart', (e) => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+        }
     });
+    document.addEventListener('dragstart', (e) => e.preventDefault());
 
-    // Disable common shortcut keys used for inspecting/viewing source code
     document.addEventListener('keydown', (e) => {
         if (
             e.key === 'F12' || 
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
-            (e.ctrlKey && e.key === 'U') || 
-            (e.ctrlKey && e.key === 'S')
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'K')) || 
+            (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'A' || e.key === 'P')) ||
+            (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'U' || e.key === 'C'))
         ) {
             e.preventDefault();
             return false;
         }
     });
+
+    // Console & Inspection Deterrent
+    (function() {
+        if (window.console) {
+            window.console.log = function() {};
+            window.console.warn = function() {};
+            window.console.error = function() {};
+        }
+    })();
 
     // 7. Success Stories Read More
     const toggleStoryBtns = document.querySelectorAll('.toggle-story-btn');
