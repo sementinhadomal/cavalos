@@ -624,26 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Back Redirect Setup ---
-    function setupBackRedirect() {
-        // Prevent back redirect if we are already on recovery or upsell
-        if (window.location.pathname.includes('recuperar.html') || window.location.pathname.includes('upsell.html')) {
-            return;
-        }
-
-        // Push state twice to create a history entry
-        window.history.pushState({ page: 1 }, "", "");
-        window.history.pushState({ page: 2 }, "", "");
-
-        window.addEventListener('popstate', (event) => {
-            // Only redirect if they are actually going back to page 1 (trying to leave the site)
-            if (event.state && event.state.page === 1) {
-                window.location.href = 'recuperar.html';
-            }
-        });
-    }
-
-    setupBackRedirect();
+    // --- Back Redirect Disabled ---
 
     // --- 4 Colares Color & Modal Handlers ---
     window._selectedColarColors = { 1: 'gold', 2: 'gold', 3: 'gold', 4: 'gold' };
