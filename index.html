@@ -260,18 +260,19 @@
                         <a href="#checkoutModal" class="btn btn-dark btn-open-donation" data-donate-value="20">Doar R$ 20</a>
                     </div>
                     
-                    <!-- R$50 -->
-                    <div class="donation-card">
+                    <!-- R$50 (Mais Escolhido) -->
+                    <div class="donation-card" style="border-color: var(--color-accent); transform: scale(1.03); box-shadow: var(--shadow-lg); position: relative;">
+                        <span style="position: absolute; top: -12px; right: 50%; transform: translateX(50%); background: var(--color-accent); color: var(--color-primary); font-size: 0.7rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">⭐ Mais Escolhido</span>
                         <div class="donation-value">R$ 50</div>
                         <p class="donation-desc">Ajuda a cobrir despesas com medicamentos básicos e pomadas de cicatrização.</p>
-                        <a href="#checkoutModal" class="btn btn-dark btn-open-donation" data-donate-value="50">Doar R$ 50</a>
+                        <a href="#checkoutModal" class="btn btn-primary btn-open-donation" data-donate-value="50">Doar R$ 50</a>
                     </div>
 
                     <!-- R$100 -->
-                    <div class="donation-card" style="border-color: var(--color-accent); transform: scale(1.02); box-shadow: var(--shadow-lg);">
+                    <div class="donation-card">
                         <div class="donation-value">R$ 100</div>
                         <p class="donation-desc">Financia exames laboratoriais essenciais para identificar infecções e anemia severa.</p>
-                        <a href="#checkoutModal" class="btn btn-primary btn-open-donation" data-donate-value="100">Doar R$ 100</a>
+                        <a href="#checkoutModal" class="btn btn-dark btn-open-donation" data-donate-value="100">Doar R$ 100</a>
                     </div>
 
                     <!-- R$250 -->
@@ -544,7 +545,10 @@
                 <div class="checkout-values-grid">
                     <button class="checkout-val-btn" data-value="20">R$ 20</button>
                     <button class="checkout-val-btn" data-value="30">R$ 30</button>
-                    <button class="checkout-val-btn active" data-value="50">R$ 50</button>
+                    <button class="checkout-val-btn active" data-value="50" style="position: relative; border-color: var(--color-accent);">
+                        R$ 50
+                        <span style="position: absolute; top: -10px; right: 50%; transform: translateX(50%); background: var(--color-accent); color: var(--color-primary); font-size: 0.55rem; font-weight: 800; padding: 2px 7px; border-radius: 10px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;">⭐ Mais Escolhido</span>
+                    </button>
                     <button class="checkout-val-btn" data-value="100">R$ 100</button>
                     <button class="checkout-val-btn" data-value="150">R$ 150</button>
                     <button class="checkout-val-btn" data-value="200">R$ 200</button>
