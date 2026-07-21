@@ -242,117 +242,6 @@
             </div>
         </section>
 
-        <!-- Section: Coleção de Colares (Os 4 Colares) -->
-        <section class="necklaces-section" id="colares">
-            <div class="container">
-                <div class="necklaces-header reveal">
-                    <span class="section-tag">🎁 Edição Solidária</span>
-                    <h2>Nossa Coleção de Colares</h2>
-                    <p>Doações a partir de <strong>R$ 50</strong> recebem de presente o seu colar preferido em Prata ou Ouro com frete grátis para todo o Brasil!</p>
-                </div>
-
-                <div class="colares-grid reveal">
-                    <!-- Colar 1: Esperança Equina -->
-                    <div class="colar-card">
-                        <span class="colar-card-badge">✦ Resgate</span>
-                        <div class="colar-img-wrap">
-                            <div class="colar-img-choice active-gold" id="colar-choice-1-gold" onclick="setColarColor(1, 'gold')">
-                                <img src="assets/images/necklace-1-gold.png" alt="Colar Esperança Equina Ouro">
-                                <span class="colar-img-tag">Ouro</span>
-                            </div>
-                            <div class="colar-img-choice" id="colar-choice-1-silver" onclick="setColarColor(1, 'silver')">
-                                <img src="assets/images/necklace-1-silver.png" alt="Colar Esperança Equina Prata">
-                                <span class="colar-img-tag">Prata</span>
-                            </div>
-                        </div>
-                        <div class="colar-body">
-                            <h3>Colar Esperança Equina</h3>
-                            <p>Pendente delicado de cavalo em círculo, perfeito para qualquer ocasião.</p>
-                            <div class="colar-color-btns">
-                                <button class="colar-color-btn active-gold" id="colar-btn-1-gold" onclick="setColarColor(1, 'gold')">✦ Ouro</button>
-                                <button class="colar-color-btn" id="colar-btn-1-silver" onclick="setColarColor(1, 'silver')">✦ Prata</button>
-                            </div>
-                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
-                            <button class="colar-btn-buy" onclick="openColarModal(1)">DOAR R$ 50 & RECEBER</button>
-                        </div>
-                    </div>
-
-                    <!-- Colar 2: Elo Infinito -->
-                    <div class="colar-card" style="border-color: var(--color-accent);">
-                        <span class="colar-card-badge">⭐ Mais Escolhido</span>
-                        <div class="colar-img-wrap">
-                            <div class="colar-img-choice active-gold" id="colar-choice-2-gold" onclick="setColarColor(2, 'gold')">
-                                <img src="assets/images/necklace-2-gold.png" alt="Colar Elo Infinito Ouro">
-                                <span class="colar-img-tag">Ouro</span>
-                            </div>
-                            <div class="colar-img-choice" id="colar-choice-2-silver" onclick="setColarColor(2, 'silver')">
-                                <img src="assets/images/necklace-2-silver.png" alt="Colar Elo Infinito Prata">
-                                <span class="colar-img-tag">Prata</span>
-                            </div>
-                        </div>
-                        <div class="colar-body">
-                            <h3>Colar Elo Infinito</h3>
-                            <p>Figura de cavalo tridimensional artesanal, símbolo de devoção e amor equino.</p>
-                            <div class="colar-color-btns">
-                                <button class="colar-color-btn active-gold" id="colar-btn-2-gold" onclick="setColarColor(2, 'gold')">✦ Ouro</button>
-                                <button class="colar-color-btn" id="colar-btn-2-silver" onclick="setColarColor(2, 'silver')">✦ Prata</button>
-                            </div>
-                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
-                            <button class="colar-btn-buy" style="background: var(--color-accent); color: var(--color-primary);" onclick="openColarModal(2)">DOAR R$ 50 & RECEBER</button>
-                        </div>
-                    </div>
-
-                    <!-- Colar 3: Espírito Livre -->
-                    <div class="colar-card">
-                        <span class="colar-card-badge">✦ Exclusivo</span>
-                        <div class="colar-img-wrap">
-                            <div class="colar-img-choice active-gold" id="colar-choice-3-gold" onclick="setColarColor(3, 'gold')">
-                                <img src="assets/images/necklace-3-gold.png" alt="Colar Espírito Livre Ouro">
-                                <span class="colar-img-tag">Ouro</span>
-                            </div>
-                            <div class="colar-img-choice" id="colar-choice-3-silver" onclick="setColarColor(3, 'silver')">
-                                <img src="assets/images/necklace-3-silver.png" alt="Colar Espírito Livre Prata">
-                                <span class="colar-img-tag">Prata</span>
-                            </div>
-                        </div>
-                        <div class="colar-body">
-                            <h3>Colar Espírito Livre</h3>
-                            <p>Design elegante a dupla estribos Y, inspirado na grande tradição equestre.</p>
-                            <div class="colar-color-btns">
-                                <button class="colar-color-btn active-gold" id="colar-btn-3-gold" onclick="setColarColor(3, 'gold')">✦ Ouro</button>
-                                <button class="colar-color-btn" id="colar-btn-3-silver" onclick="setColarColor(3, 'silver')">✦ Prata</button>
-                            </div>
-                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
-                            <button class="colar-btn-buy" onclick="openColarModal(3)">DOAR R$ 50 & RECEBER</button>
-                        </div>
-                    </div>
-
-                    <!-- Colar 4: Étriers Elegance -->
-                    <div class="colar-card">
-                        <span class="colar-card-badge">✦ Lançamento</span>
-                        <div class="colar-img-wrap">
-                            <div class="colar-img-choice active-gold" id="colar-choice-4-gold" onclick="setColarColor(4, 'gold')">
-                                <img src="assets/images/necklace-4-gold.png" alt="Étriers Elegance Ouro">
-                                <span class="colar-img-tag">Ouro</span>
-                            </div>
-                            <div class="colar-img-choice" id="colar-choice-4-silver" onclick="setColarColor(4, 'silver')">
-                                <img src="assets/images/necklace-4-silver.png" alt="Étriers Elegance Prata">
-                                <span class="colar-img-tag">Prata</span>
-                            </div>
-                        </div>
-                        <div class="colar-body">
-                            <h3>Étriers Elegance</h3>
-                            <p>Perfil minimalista de cavalo, símbolo moderno de elegância e liberdade.</p>
-                            <div class="colar-color-btns">
-                                <button class="colar-color-btn active-gold" id="colar-btn-4-gold" onclick="setColarColor(4, 'gold')">✦ Ouro</button>
-                                <button class="colar-color-btn" id="colar-btn-4-silver" onclick="setColarColor(4, 'silver')">✦ Prata</button>
-                            </div>
-                            <div class="colar-price-tag">A partir de <strong>R$ 50</strong></div>
-                            <button class="colar-btn-buy" onclick="openColarModal(4)">DOAR R$ 50 & RECEBER</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- Donation Packages Section -->
@@ -649,32 +538,13 @@
             <div id="checkoutStepInput">
                 <div class="checkout-header">
                     <h3>Quanto deseja doar?</h3>
-                    <p id="checkoutHeaderSub">Doações a partir de <strong>R$ 50</strong> recebem o Colar de presente com frete grátis!</p>
+                    <p>Sua contribuição ajuda a financiar resgates de emergência, cirurgias e alimentação diária dos cavalos.</p>
                 </div>
                 
-                <!-- Selected Necklace Preview Card inside Modal -->
-                <div id="modalColarPreview" style="background: #ffffff; border: 1.5px solid rgba(18,58,114,0.15); border-radius: 12px; padding: 0.85rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.85rem; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                    <img id="modalColarImg" src="assets/images/necklace-2-gold.png" alt="Colar Selecionado" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <div style="flex: 1;">
-                        <div style="font-size: 0.7rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.5px;">🎁 Seu Presente Selecionado:</div>
-                        <div id="modalColarTitle" style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary);">Colar Elo Infinito</div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem;">
-                            <span id="modalColarBadge" style="font-size: 0.75rem; font-weight: 700; color: #92400e; background: #fffbebf5; border: 1px solid #d97706; padding: 1px 8px; border-radius: 12px;">✦ Ouro</span>
-                            <div style="display: flex; gap: 4px;">
-                                <button onclick="setModalColarColor('gold')" style="border: 1px solid #d97706; background: #fffbebf5; color: #92400e; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Ouro</button>
-                                <button onclick="setModalColarColor('silver')" style="border: 1px solid #64748b; background: #f1f5f9; color: #1e293b; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; cursor: pointer;">Prata</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="checkout-values-grid">
                     <button class="checkout-val-btn" data-value="20">R$ 20</button>
                     <button class="checkout-val-btn" data-value="30">R$ 30</button>
-                    <button class="checkout-val-btn active" data-value="50" style="position: relative;">
-                        R$ 50
-                        <span style="position: absolute; top: -8px; right: 50%; transform: translateX(50%); background: var(--color-primary); color: var(--color-accent); font-size: 0.5rem; font-weight: 800; padding: 2px 6px; border-radius: 10px; border: 1.5px solid var(--color-accent); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;">⭐ Inclui Colar</span>
-                    </button>
+                    <button class="checkout-val-btn active" data-value="50">R$ 50</button>
                     <button class="checkout-val-btn" data-value="100">R$ 100</button>
                     <button class="checkout-val-btn" data-value="150">R$ 150</button>
                     <button class="checkout-val-btn" data-value="200">R$ 200</button>
@@ -686,22 +556,6 @@
                 <div class="checkout-custom-field" style="margin-bottom: 1.25rem;">
                     <span class="currency-sym">R$</span>
                     <input type="number" id="checkoutCustomValue" placeholder="Digite outro valor..." min="5">
-                </div>
-
-                <!-- Shipping Address Container (Shown automatically for R$ 50+ donations) -->
-                <div id="shippingFieldsContainer" style="background: rgba(18, 58, 114, 0.04); border: 1.5px solid rgba(18, 58, 114, 0.12); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: left;">
-                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
-                        <span>🚚 Dados para Envio do Seu Colar Grátis:</span>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                        <input type="text" id="shippingName" placeholder="Seu Nome Completo *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
-                        <input type="tel" id="shippingPhone" placeholder="WhatsApp / Telefone com DDD *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
-                        <div style="display: flex; gap: 0.5rem;">
-                            <input type="text" id="shippingCep" placeholder="CEP *" style="width: 40%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
-                            <input type="text" id="shippingAddress" placeholder="Rua e Número *" style="width: 60%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
-                        </div>
-                        <input type="text" id="shippingCity" placeholder="Bairro, Cidade e Estado *" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem; outline: none;">
-                    </div>
                 </div>
 
                 <button class="btn btn-primary" id="btnDoarAgora" style="width: 100%; border-radius:8px; padding:1rem;">❤️ GERAR PIX DE DOAÇÃO</button>
